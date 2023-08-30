@@ -48,7 +48,7 @@ disp(p3);
 % Store the data of the transfer function's impulse response for 5 seconds using Left-hand
 % arguments
 [y, t] = impulse(p3, 5);
-% Define the 2x2 matrix subplot and position (Top left)
+% Plot the 2x2 matrix subplot and position (Top left)
 subplot(2,2,1)
 % Plot the graph of the impulse response
 plot(t, y);
@@ -67,7 +67,7 @@ disp(p4);
 % Store the data of the transfer function's step response for 5 seconds using Left-hand
 % arguments
 [y, t] = step(p4, 5);
-% Define the 2x2 matrix subplot and position (Top right)
+% Plot the 2x2 matrix subplot and position (Top right)
 subplot(2,2,2)
 % Plot the graph of the step response
 plot(t, y);
@@ -89,7 +89,7 @@ t = [0:0.1:5];
 u = exp(-t);
 % use the lsim function to store the data to be plotted
 [y, t_out]=lsim(p5, u, t)
-% Define the 2x2 matrix subplot and position (Bottom left)
+% Plot the 2x2 matrix subplot and position (Bottom left)
 subplot(2,2,3)
 % Plot the graph of the exponential response
 plot(t, y);
@@ -111,7 +111,7 @@ t = [0:0.1:5];
 u = sin(t);
 % use the lsim function to store the data to be plotted
 [y, t_out]=lsim(p6, u, t)
-% Define the 2x2 matrix subplot and position (Bottom right)
+% Plot the 2x2 matrix subplot and position (Bottom right)
 subplot(2,2,4)
 % Plot the graph of the sinusoidal response
 plot(t, y);
