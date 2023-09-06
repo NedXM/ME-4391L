@@ -1,0 +1,36 @@
+%% Problem 2
+
+a=2;
+b=3;
+c=0.25;
+d=1*(2*pi);
+
+sim('ME4391L_LAB2_Goulenko_P1');
+
+figure();
+plot(time, sim_out);
+
+title('Problem 1.2a Simulated Output');
+xlabel('Time (s)');
+ylabel('Output Amplitude');
+grid on;
+ylim([-0.1,0.5])
+legend('Sim Out')
+
+%% Problem 3
+
+sim('ME4391L_LAB2_Goulenko_P1');
+
+
+figure();
+
+plot(time, sim_out,time, sim_out3);
+
+sim('ME4391L_LAB2_Goulenko_P3');
+
+title('Problem 1.2c Simulated Outputs');
+xlabel('Time (s)');
+ylabel('Output Amplitude');
+grid on;
+ylim([-1.5,1.5])
+legend('Sim Out')
