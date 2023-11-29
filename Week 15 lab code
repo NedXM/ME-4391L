@@ -1,0 +1,106 @@
+clc
+clear
+close all
+s = tf('s');
+P = (s + 12.1) / ((s^2 + 2*s + 51.54) * (s^2 + 2.25*s + 5.75));
+w = [.1 .5 1 2 3 4 5 6 7 8 9 10];
+mag = zeros(1,length(w));
+t = 0:0.01:1000;
+for i = 1:length(w)
+u = sin(w(i)*t);
+y = lsim(P,u,t);
+
+mag(i) = max(abs(y));
+end
+om = logspace(-2, 2, 100);
+
+[bode_mag, pha] = bode(P,om);
+loglog(om, squeeze(bode_mag));
+hold on
+plot(w,mag,"r.","MarkerSize",15);
+grid on
+title("Bode Magnitude plot for P(s)");
+xlabel("Frequency (rad/s)");
+ylabel("Bode Magnitude (absolute)");
+title('Closed loop impulse response');
+subplot(2,2,4)
+pzplot(T)
+xlim([-3 3]);
+ylim([-3 3]);
+title('Closed-loop pole/zero map');
+
+k=2; %outside the stable range
+figure (2)
+subplot(2,2,1)
+nyquist (k*G)
+title('Open-loop Nyquist plot (k=2)');
+subplot(2,2,2)
+bode(k*G)
+title('Open loop Bode plot');
+subplot(2,2,3)
+T=feedback(k*G,1); %Closed loop t.f.
+impulse(T)
+title('Closed loop impulse response');
+subplot(2,2,4)
+pzplot(T)
+xlim([-3 3]);
+ylim([-3 3]);
+title('Closed-loop pole/zero map')ata"],"Location","southwest");
+
+%%Problem 2
+
+h = bodeplot(P);
+setoptions(h,’MagUnits’, ’abs’, ’Magscale’, ’log’);
+grid
+
+set(gcf,’PaperUnits’,’centimeters’,’position’, [125 350, 1100, 450])
+subplot(121)
+h = bodeplot(P);
+setoptions(h,’MagUnits’, ’abs’, ’Magscale’, ’log’);
+grid
+subplot(122)
+nyquist(P)
+
+
+%%Problem 3
+
+
+s=tf('s');
+syms k
+G = (s+1)/((s-1)*(s-2));
+figure (1)
+k=4; %Inside the stable range
+subplot(2,2,1)
+nyquist (k*G)
+title('Open-loop Nyquist plot (k=4)');
+subplot(2,2,2)
+bode(k*G)
+title('Open loop Bode plot');
+subplot(2,2,3)
+T=feedback(k*G,1); %Closed loop t.f.
+impulse(T)
+title('Closed loop impulse response');
+subplot(2,2,4)
+pzplot(T)
+xlim([-3 3]);
+ylim([-3 3]);
+title('Closed-loop pole/zero map');
+
+k=2; %outside the stable range
+figure (2)
+subplot(2,2,1)
+nyquist (k*G)
+title('Open-loop Nyquist plot (k=2)');
+subplot(2,2,2)
+bode(k*G)
+title('Open loop Bode plot');
+subplot(2,2,3)
+T=feedback(k*G,1); %Closed loop t.f.
+impulse(T)
+title('Closed loop impulse response');
+subplot(2,2,4)
+pzplot(T)
+xlim([-3 3]);
+ylim([-3 3]);
+title('Closed-loop pole/zero map')
+
